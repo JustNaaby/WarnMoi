@@ -15,10 +15,8 @@ This a simple web interface that allow you to :
 
 I'm not pro, so please test by yourself my project before put on your production server.
 
-[img]
-
 ## Requirements
-- [AWarn2]https://www.gmodstore.com/market/view/awarn2-warning-module) (MySQL activated)
+- [AWarn2](https://www.gmodstore.com/market/view/awarn2-warning-module) (MySQL activated)
 - WEB Server
   - PHP (with MYSQL PDO)
   
