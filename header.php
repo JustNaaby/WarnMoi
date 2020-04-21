@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>AWarn2 - Ethernium.net</title>
+    <title>AWarn2</title>
     <link rel="stylesheet" type="text/css" href="semantic-ui/semantic.min.css">
 </head>
 <body>
-<h1>AWarn2 - Ethernium.net</h1>
+<h1>AWarn2</h1>
 <div class="ui top attached tabular menu">
     <a class="item <?php if (empty($_GET)): echo 'active'; endif ?>" onclick="liste_des_warns()">
         Liste des warns
