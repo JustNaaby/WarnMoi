@@ -23,5 +23,5 @@ I'm not pro, so please test by yourself my project before put on your production
   - PHP (with MYSQL PDO)
   
 ## Install
-  [Relase](https://github.com/JustNaaby/WarnMoi/releases)
+  [Release](https://github.com/JustNaaby/WarnMoi/releases)
   How to install soon
