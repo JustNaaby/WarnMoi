@@ -1,22 +1,29 @@
 <?php
 include 'config.php';
 include 'steamid.php';
+include 'header.php';
+/////////////////////////////////////////////////
+/// Récup des warns (Onglet Lister)
+/////////////////////////////////////////////////
 $steamid32 = filter_input(INPUT_GET, 'steamid', FILTER_SANITIZE_STRING);
+$add = filter_input(INPUT_GET, 'add', FILTER_SANITIZE_STRING);
 $dsn = 'mysql:host=' . $mysql['hote'] . ';dbname=' . $mysql['dbname'] . ';charset=utf8';
 $dbh = new PDO($dsn, $mysql['username'], $mysql['mdp'],
     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-if (!empty($steamid32)) {
+if (!empty($steamid32)) {//Si recherche particulière
     $unique_id = toCommunityID($steamid32);
     $requete = "SELECT * FROM awarn_warnings WHERE unique_id=:unique_id ORDER BY date DESC;";
     $sth = $dbh->prepare($requete);
     $sth->bindParam(':unique_id', $unique_id, PDO::PARAM_STR);
     $sth->execute();
-} else {
+} else {//Si aucune recherche par steamID (on affichge les 30 derniers warns)
     $query = "SELECT * FROM awarn_warnings ORDER BY date DESC LIMIT 30;";
     $sth = $dbh->query($query);
 }
 $data = $sth->fetchAll(PDO::FETCH_ASSOC);
-include 'header.php';
+/////////////////////////////////////////////////
+///
+/////////////////////////////////////////////////
 if (isset($_GET['pid']))://Onglet modifier
     $requete = <<<PDO
             SELECT * FROM awarn_warnings WHERE pid=:pid
@@ -50,7 +57,7 @@ elseif (isset($_GET['add']))://Onglet ajouter
     <div class="field">
         <label for="unique_id">SteamID</label>
         <div class="field">
-            <input type="text" name="unique_id" id="unique_id" placeholder="SteamID">
+            <input type="text" name="unique_id" id="unique_id" placeholder="SteamID" value="<?php if (!empty($add)){echo $add;} ?>">
         </div>
     </div>
     <div class="field">
