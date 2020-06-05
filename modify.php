@@ -1,6 +1,15 @@
 <?php
 require_once 'steamid.php';
 require_once 'config.php';
+
+if (!isset($_SESSION['steamid'])) {
+
+    die();
+
+} elseif (in_array($_SESSION['steamid'], $admins)) {
+    die("Non, pas d'accès.");
+}
+
 $dsn = 'mysql:host=' . $mysql['hote'] . ';dbname=' . $mysql['dbname'] . ';charset=utf8';
 $dbh = new PDO($dsn, $mysql['username'], $mysql['mdp'],
     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
