@@ -1,7 +1,9 @@
 <?php
-include 'config.php';
-include 'steamid.php';
-include 'header.php';
+require_once 'config.php';
+require_once 'steamid.php';
+require_once 'header.php';
+require_once 'steamauth/steamauth.php';
+
 /////////////////////////////////////////////////
 /// Récup des warns (Onglet Lister)
 /////////////////////////////////////////////////

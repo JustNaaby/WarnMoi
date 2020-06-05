@@ -1,6 +1,6 @@
 <?php
-include 'steamid.php';
-include 'config.php';
+require_once 'steamid.php';
+require_once 'config.php';
 $dsn = 'mysql:host=' . $mysql['hote'] . ';dbname=' . $mysql['dbname'] . ';charset=utf8';
 $dbh = new PDO($dsn, $mysql['username'], $mysql['mdp'],
     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
